@@ -45,6 +45,7 @@ module.exports = {
           '/^next/',
           'module',
           ['parent', 'sibling', 'index'],
+          '/styles$/',
         ],
         alphabetize: { order: 'asc', ignoreCase: true },
       },
@@ -77,5 +78,6 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
     'react/no-children-prop': 'off',
+    '@next/next/no-img-element': 'off',
   },
 };
