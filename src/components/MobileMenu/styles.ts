@@ -51,24 +51,3 @@ export const Divider = styled.hr`
   border-color: transparent;
   border-bottom-color: #ecf2fa;
 `;
-
-export const MenuList = styled.div`
-  a {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-
-    margin-bottom: 16px;
-
-    font-size: 12px;
-    color: #2e7bb4;
-    text-decoration: none;
-
-    img {
-      width: 16px;
-      height: 16px;
-
-      margin-right: 5px;
-    }
-  }
-`;
