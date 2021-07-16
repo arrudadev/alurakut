@@ -19,45 +19,55 @@ export const ProfileRelationsBoxWrapper = styled(Box)`
     background-position: center center;
   }
 
-  ul li a {
-    display: inline-block;
-    height: 102px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
+  ul {
+    li {
+      display: none;
 
-    span {
-      color: #ffffff;
-      font-size: 10px;
+      &:nth-child(-n + 6) {
+        display: block;
+      }
 
-      position: absolute;
-      left: 0;
-      bottom: 10px;
+      a {
+        display: inline-block;
+        height: 102px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
 
-      z-index: 2;
+        span {
+          color: #ffffff;
+          font-size: 10px;
 
-      width: 100%;
-      padding: 0 4px;
+          position: absolute;
+          left: 0;
+          bottom: 10px;
 
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-    }
+          z-index: 2;
 
-    &:after {
-      content: '';
-      display: block;
+          width: 100%;
+          padding: 0 4px;
 
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+        }
 
-      z-index: 1;
-      background-image: linear-gradient(0deg, #00000073, transparent);
+        &:after {
+          content: '';
+          display: block;
+
+          position: absolute;
+          top: 0;
+          right: 0;
+          left: 0;
+          bottom: 0;
+
+          z-index: 1;
+          background-image: linear-gradient(0deg, #00000073, transparent);
+        }
+      }
     }
   }
 `;

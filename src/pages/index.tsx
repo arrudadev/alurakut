@@ -25,6 +25,7 @@ export default function Home() {
     'peas',
     'rafaballerini',
     'marcobrunodev',
+    'diego3g',
     'felipefialho',
   ];
 
@@ -92,6 +93,22 @@ export default function Home() {
           className="profile-relations-area"
           style={{ gridArea: 'profile-relation-area' }}
         >
+          <ProfileRelationsBoxWrapper>
+            <h2 className="smallTitle">Comunidades ({communities.length})</h2>
+            <ul>
+              {communities.map(community => {
+                return (
+                  <li key={community.id}>
+                    <a href={`/users/${community.title}`}>
+                      <img src={community.image} alt={community.title} />
+                      <span>{community.title}</span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </ProfileRelationsBoxWrapper>
+
           <ProfileRelationsBoxWrapper>
             <h2 className="smallTitle">
               Pessoas da comunidade ({users.length})
