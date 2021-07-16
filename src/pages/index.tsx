@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 
 import { Box } from '../components/Box';
 import { IconSet } from '../components/IconSet';
@@ -7,8 +7,31 @@ import { Menu } from '../components/Menu';
 import { ProfileRelationsBox } from '../components/ProfileRelationsBox';
 import { ProfileSidebar } from '../components/ProfileSidebar';
 
+type GitHubFollower = {
+  login: string;
+  avatar_url: string;
+};
+
+type Community = {
+  id: string;
+  name: string;
+  image: string;
+};
+
+type User = {
+  id: string;
+  name: string;
+  image: string;
+};
+
+type Follower = {
+  id: string;
+  name: string;
+  image: string;
+};
+
 export default function Home() {
-  const [communities, setCommunities] = useState([
+  const [communities, setCommunities] = useState<Community[]>([
     {
       id: '1',
       name: 'Eu odeio acordar cedo',
@@ -19,7 +42,9 @@ export default function Home() {
   const [communityTitle, setCommunityTitle] = useState('');
   const [communityImage, setCommunityImage] = useState('');
 
-  const users = [
+  const [followers, setFollowers] = useState<Follower[]>([]);
+
+  const users: User[] = [
     {
       id: '1',
       name: 'juunegreiros',
@@ -56,6 +81,24 @@ export default function Home() {
       image: 'https://github.com/felipefialho.png',
     },
   ];
+
+  useEffect(() => {
+    fetch('https://api.github.com/users/monteiro-alexandre/followers')
+      .then(response => {
+        return response.json();
+      })
+      .then((gitHubFollowers: GitHubFollower[]) => {
+        const serializedFollowers = gitHubFollowers.map(follower => {
+          return {
+            id: follower.login,
+            name: follower.login,
+            image: follower.avatar_url,
+          };
+        });
+
+        setFollowers(serializedFollowers);
+      });
+  }, []);
 
   function handleCreateCommunity(event: FormEvent) {
     event.preventDefault();
@@ -121,6 +164,8 @@ export default function Home() {
           className="profile-relations-area"
           style={{ gridArea: 'profile-relation-area' }}
         >
+          <ProfileRelationsBox title="Seguidores" items={followers} />
+
           <ProfileRelationsBox title="Comunidades" items={communities} />
 
           <ProfileRelationsBox title="Pessoas da comunidade" items={users} />
