@@ -4,14 +4,14 @@ import { Box } from '../components/Box';
 import { IconSet } from '../components/IconSet';
 import { MainGrid } from '../components/MainGrid';
 import { Menu } from '../components/Menu';
-import { ProfileRelationsBoxWrapper } from '../components/ProfileRelationsBoxWrapper';
+import { ProfileRelationsBox } from '../components/ProfileRelationsBox';
 import { ProfileSidebar } from '../components/ProfileSidebar';
 
 export default function Home() {
   const [communities, setCommunities] = useState([
     {
-      id: '12802378123789378912789789123896123',
-      title: 'Eu odeio acordar cedo',
+      id: '1',
+      name: 'Eu odeio acordar cedo',
       image: 'https://alurakut.vercel.app/capa-comunidade-01.jpg',
     },
   ]);
@@ -20,13 +20,41 @@ export default function Home() {
   const [communityImage, setCommunityImage] = useState('');
 
   const users = [
-    'juunegreiros',
-    'omariosouto',
-    'peas',
-    'rafaballerini',
-    'marcobrunodev',
-    'diego3g',
-    'felipefialho',
+    {
+      id: '1',
+      name: 'juunegreiros',
+      image: 'https://github.com/juunegreiros.png',
+    },
+    {
+      id: '2',
+      name: 'omariosouto',
+      image: 'https://github.com/omariosouto.png',
+    },
+    {
+      id: '3',
+      name: 'peas',
+      image: 'https://github.com/peas.png',
+    },
+    {
+      id: '4',
+      name: 'rafaballerini',
+      image: 'https://github.com/rafaballerini.png',
+    },
+    {
+      id: '5',
+      name: 'marcobrunodev',
+      image: 'https://github.com/marcobrunodev.png',
+    },
+    {
+      id: '6',
+      name: 'diego3g',
+      image: 'https://github.com/diego3g.png',
+    },
+    {
+      id: '7',
+      name: 'felipefialho',
+      image: 'https://github.com/felipefialho.png',
+    },
   ];
 
   function handleCreateCommunity(event: FormEvent) {
@@ -35,7 +63,7 @@ export default function Home() {
     if (communityTitle.length > 0 && communityImage.length > 0) {
       const community = {
         id: new Date().toISOString(),
-        title: communityTitle,
+        name: communityTitle,
         image: communityImage,
       };
 
@@ -93,40 +121,9 @@ export default function Home() {
           className="profile-relations-area"
           style={{ gridArea: 'profile-relation-area' }}
         >
-          <ProfileRelationsBoxWrapper>
-            <h2 className="smallTitle">Comunidades ({communities.length})</h2>
-            <ul>
-              {communities.map(community => {
-                return (
-                  <li key={community.id}>
-                    <a href={`/users/${community.title}`}>
-                      <img src={community.image} alt={community.title} />
-                      <span>{community.title}</span>
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </ProfileRelationsBoxWrapper>
+          <ProfileRelationsBox title="Comunidades" items={communities} />
 
-          <ProfileRelationsBoxWrapper>
-            <h2 className="smallTitle">
-              Pessoas da comunidade ({users.length})
-            </h2>
-
-            <ul>
-              {users.map(user => {
-                return (
-                  <li key={user}>
-                    <a href={`/users/${user}`}>
-                      <img src={`https://github.com/${user}.png`} alt={user} />
-                      <span>{user}</span>
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </ProfileRelationsBoxWrapper>
+          <ProfileRelationsBox title="Pessoas da comunidade" items={users} />
         </div>
       </MainGrid>
     </>
