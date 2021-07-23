@@ -6,6 +6,7 @@ import { MainGrid } from '../components/MainGrid';
 import { Menu } from '../components/Menu';
 import { ProfileRelationsBox } from '../components/ProfileRelationsBox';
 import { ProfileSidebar } from '../components/ProfileSidebar';
+import { Testimonials } from '../components/Testimonials';
 
 type GitHubFollower = {
   login: string;
@@ -158,6 +159,8 @@ export default function Home() {
               <button type="submit">Criar comunidade</button>
             </form>
           </Box>
+
+          <Testimonials githubUser="monteiro-alexandre" />
         </div>
 
         <div
