@@ -1,6 +1,7 @@
 import { FormEvent, useEffect, useState } from 'react';
 
 import { Box } from '../components/Box';
+import { CreateCommunityForm } from '../components/Forms/CreateCommunity';
 import { IconSet } from '../components/IconSet';
 import { MainGrid } from '../components/MainGrid';
 import { Menu } from '../components/Menu';
@@ -39,9 +40,6 @@ export default function Home() {
       image: 'https://alurakut.vercel.app/capa-comunidade-01.jpg',
     },
   ]);
-
-  const [communityTitle, setCommunityTitle] = useState('');
-  const [communityImage, setCommunityImage] = useState('');
 
   const [followers, setFollowers] = useState<Follower[]>([]);
 
@@ -101,23 +99,6 @@ export default function Home() {
       });
   }, []);
 
-  function handleCreateCommunity(event: FormEvent) {
-    event.preventDefault();
-
-    if (communityTitle.length > 0 && communityImage.length > 0) {
-      const community = {
-        id: new Date().toISOString(),
-        name: communityTitle,
-        image: communityImage,
-      };
-
-      setCommunities([...communities, community]);
-
-      setCommunityTitle('');
-      setCommunityImage('');
-    }
-  }
-
   return (
     <>
       <Menu githubUser="monteiro-alexandre" />
@@ -135,29 +116,11 @@ export default function Home() {
 
           <Box>
             <h2 className="subTitle">O que você deseja fazer?</h2>
-            <form onSubmit={handleCreateCommunity}>
-              <div>
-                <input
-                  placeholder="Qual vai ser o nome da sua comunidade?"
-                  name="title"
-                  aria-label="Qual vai ser o nome da sua comunidade?"
-                  type="text"
-                  value={communityTitle}
-                  onChange={event => setCommunityTitle(event.target.value)}
-                />
-              </div>
-              <div>
-                <input
-                  placeholder="Coloque uma URL para usarmos de capa"
-                  name="image"
-                  aria-label="Coloque uma URL para usarmos de capa"
-                  value={communityImage}
-                  onChange={event => setCommunityImage(event.target.value)}
-                />
-              </div>
 
-              <button type="submit">Criar comunidade</button>
-            </form>
+            <CreateCommunityForm
+              communities={communities}
+              setCommunities={setCommunities}
+            />
           </Box>
 
           <Testimonials githubUser="monteiro-alexandre" />
