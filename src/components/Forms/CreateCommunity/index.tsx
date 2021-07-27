@@ -1,5 +1,7 @@
 import { FormEvent, useState } from 'react';
 
+import { Button } from '../../Button';
+
 type Community = {
   id: string;
   name: string;
@@ -57,7 +59,9 @@ export function CreateCommunityForm({
         />
       </div>
 
-      <button type="submit">Criar comunidade</button>
+      <Button type="submit" isActive>
+        Criar comunidade
+      </Button>
     </form>
   );
 }

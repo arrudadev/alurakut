@@ -64,14 +64,4 @@ export const Box = styled.div`
       opacity: 1;
     }
   }
-
-  button {
-    border: 0;
-    border-radius: 10000px;
-
-    padding: 8px 12px;
-
-    color: #ffffff;
-    background-color: #6f92bb;
-  }
 `;
