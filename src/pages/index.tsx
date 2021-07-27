@@ -1,5 +1,6 @@
 import { FormEvent, useEffect, useState } from 'react';
 
+import { ActionsBox } from '../components/ActionsBox';
 import { Box } from '../components/Box';
 import { CreateCommunityForm } from '../components/Forms/CreateCommunity';
 import { IconSet } from '../components/IconSet';
@@ -114,14 +115,7 @@ export default function Home() {
             <IconSet />
           </Box>
 
-          <Box>
-            <h2 className="subTitle">O que você deseja fazer?</h2>
-
-            <CreateCommunityForm
-              communities={communities}
-              setCommunities={setCommunities}
-            />
-          </Box>
+          <ActionsBox />
 
           <Testimonials githubUser="monteiro-alexandre" />
         </div>
