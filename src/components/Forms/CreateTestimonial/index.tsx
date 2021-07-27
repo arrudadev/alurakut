@@ -1,6 +1,8 @@
 import { FormEvent, useState } from 'react';
 
+import { Button } from '../../Button';
 import { Input } from '../Input';
+import { TextArea } from '../TextArea';
 
 type Testimonial = {
   githubUser: string;
@@ -49,7 +51,7 @@ export function CreateTestimonialForm({
         />
       </div>
       <div>
-        <Input
+        <TextArea
           placeholder="Digite seu depoimento..."
           name="testimonial"
           aria-label="Digite seu depoimento..."
@@ -58,7 +60,9 @@ export function CreateTestimonialForm({
         />
       </div>
 
-      <button type="submit">Criar depoimento</button>
+      <Button type="submit" isActive>
+        Criar depoimento
+      </Button>
     </form>
   );
 }

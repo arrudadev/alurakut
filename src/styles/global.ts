@@ -66,7 +66,7 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
-  input {
+  input, textarea {
     transition: .3s;
     outline: 0;
     &:disabled {
