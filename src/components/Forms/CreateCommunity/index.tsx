@@ -1,6 +1,7 @@
 import { FormEvent, useState } from 'react';
 
 import { Button } from '../../Button';
+import { Input } from '../Input';
 
 type Community = {
   id: string;
@@ -40,7 +41,7 @@ export function CreateCommunityForm({
   return (
     <form onSubmit={handleCreateCommunity}>
       <div>
-        <input
+        <Input
           placeholder="Qual vai ser o nome da sua comunidade?"
           name="title"
           aria-label="Qual vai ser o nome da sua comunidade?"
@@ -50,7 +51,7 @@ export function CreateCommunityForm({
         />
       </div>
       <div>
-        <input
+        <Input
           placeholder="Coloque uma URL para usarmos de capa"
           name="image"
           aria-label="Coloque uma URL para usarmos de capa"

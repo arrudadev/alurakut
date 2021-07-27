@@ -1,5 +1,7 @@
 import { FormEvent, useState } from 'react';
 
+import { Input } from '../Input';
+
 type Testimonial = {
   githubUser: string;
   testimonial: string;
@@ -37,7 +39,7 @@ export function CreateTestimonialForm({
   return (
     <form onSubmit={handleCreateTestimonial}>
       <div>
-        <input
+        <Input
           placeholder="Digite seu usuário do github?"
           name="user"
           aria-label="Digite seu usuário do github?"
@@ -47,7 +49,7 @@ export function CreateTestimonialForm({
         />
       </div>
       <div>
-        <input
+        <Input
           placeholder="Digite seu depoimento..."
           name="testimonial"
           aria-label="Digite seu depoimento..."
