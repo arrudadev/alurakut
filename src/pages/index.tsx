@@ -1,8 +1,12 @@
-import { FormEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import { GetServerSideProps } from 'next';
+
+import jwt from 'jsonwebtoken';
+import nookies from 'nookies';
 
 import { ActionsBox } from '../components/ActionsBox';
 import { Box } from '../components/Box';
-import { CreateCommunityForm } from '../components/Forms/CreateCommunity';
 import { IconSet } from '../components/IconSet';
 import { MainGrid } from '../components/MainGrid';
 import { Menu } from '../components/Menu';
@@ -33,7 +37,11 @@ type Follower = {
   image: string;
 };
 
-export default function Home() {
+type HomeProps = {
+  githubUser: string;
+};
+
+export default function Home({ githubUser }: HomeProps) {
   const [communities, setCommunities] = useState<Community[]>([
     {
       id: '1',
@@ -83,7 +91,7 @@ export default function Home() {
   ];
 
   useEffect(() => {
-    fetch('https://api.github.com/users/monteiro-alexandre/followers')
+    fetch(`https://api.github.com/users/${githubUser}/followers`)
       .then(response => {
         return response.json();
       })
@@ -102,10 +110,10 @@ export default function Home() {
 
   return (
     <>
-      <Menu githubUser="monteiro-alexandre" />
+      <Menu githubUser={githubUser} />
       <MainGrid>
         <div className="profile-area" style={{ gridArea: 'profile-area' }}>
-          <ProfileSidebar githubUser="monteiro-alexandre" />
+          <ProfileSidebar githubUser={githubUser} />
         </div>
 
         <div className="welcome-area" style={{ gridArea: 'welcome-area' }}>
@@ -117,7 +125,7 @@ export default function Home() {
 
           <ActionsBox />
 
-          <Testimonials githubUser="monteiro-alexandre" />
+          <Testimonials githubUser={githubUser} />
         </div>
 
         <div
@@ -134,3 +142,26 @@ export default function Home() {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async context => {
+  const cookies = nookies.get(context);
+  const token = cookies.USER_TOKEN;
+
+  const decodedToken = jwt.decode(token) as { githubUser: string };
+  const githubUser = decodedToken?.githubUser;
+
+  if (!githubUser) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      githubUser,
+    },
+  };
+};
