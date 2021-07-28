@@ -7,6 +7,7 @@ import nookies from 'nookies';
 
 import { ActionsBox } from '../components/ActionsBox';
 import { Box } from '../components/Box';
+import { CommunityPersons } from '../components/CommunityPersons';
 import { Followers } from '../components/Followers';
 import { IconSet } from '../components/IconSet';
 import { MainGrid } from '../components/MainGrid';
@@ -16,12 +17,6 @@ import { ProfileSidebar } from '../components/ProfileSidebar';
 import { Testimonials } from '../components/Testimonials';
 
 type Community = {
-  id: string;
-  name: string;
-  image: string;
-};
-
-type User = {
   id: string;
   name: string;
   image: string;
@@ -39,44 +34,6 @@ export default function Home({ githubUser }: HomeProps) {
       image: 'https://alurakut.vercel.app/capa-comunidade-01.jpg',
     },
   ]);
-
-  const users: User[] = [
-    {
-      id: '1',
-      name: 'juunegreiros',
-      image: 'https://github.com/juunegreiros.png',
-    },
-    {
-      id: '2',
-      name: 'omariosouto',
-      image: 'https://github.com/omariosouto.png',
-    },
-    {
-      id: '3',
-      name: 'peas',
-      image: 'https://github.com/peas.png',
-    },
-    {
-      id: '4',
-      name: 'rafaballerini',
-      image: 'https://github.com/rafaballerini.png',
-    },
-    {
-      id: '5',
-      name: 'marcobrunodev',
-      image: 'https://github.com/marcobrunodev.png',
-    },
-    {
-      id: '6',
-      name: 'diego3g',
-      image: 'https://github.com/diego3g.png',
-    },
-    {
-      id: '7',
-      name: 'felipefialho',
-      image: 'https://github.com/felipefialho.png',
-    },
-  ];
 
   return (
     <>
@@ -106,7 +63,7 @@ export default function Home({ githubUser }: HomeProps) {
 
           <ProfileRelationsBox title="Comunidades" items={communities} />
 
-          <ProfileRelationsBox title="Pessoas da comunidade" items={users} />
+          <CommunityPersons />
         </div>
       </MainGrid>
     </>
