@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { GetServerSideProps } from 'next';
 
@@ -7,17 +7,13 @@ import nookies from 'nookies';
 
 import { ActionsBox } from '../components/ActionsBox';
 import { Box } from '../components/Box';
+import { Followers } from '../components/Followers';
 import { IconSet } from '../components/IconSet';
 import { MainGrid } from '../components/MainGrid';
 import { Menu } from '../components/Menu';
 import { ProfileRelationsBox } from '../components/ProfileRelationsBox';
 import { ProfileSidebar } from '../components/ProfileSidebar';
 import { Testimonials } from '../components/Testimonials';
-
-type GitHubFollower = {
-  login: string;
-  avatar_url: string;
-};
 
 type Community = {
   id: string;
@@ -26,12 +22,6 @@ type Community = {
 };
 
 type User = {
-  id: string;
-  name: string;
-  image: string;
-};
-
-type Follower = {
   id: string;
   name: string;
   image: string;
@@ -49,8 +39,6 @@ export default function Home({ githubUser }: HomeProps) {
       image: 'https://alurakut.vercel.app/capa-comunidade-01.jpg',
     },
   ]);
-
-  const [followers, setFollowers] = useState<Follower[]>([]);
 
   const users: User[] = [
     {
@@ -90,24 +78,6 @@ export default function Home({ githubUser }: HomeProps) {
     },
   ];
 
-  useEffect(() => {
-    fetch(`https://api.github.com/users/${githubUser}/followers`)
-      .then(response => {
-        return response.json();
-      })
-      .then((gitHubFollowers: GitHubFollower[]) => {
-        const serializedFollowers = gitHubFollowers.map(follower => {
-          return {
-            id: follower.login,
-            name: follower.login,
-            image: follower.avatar_url,
-          };
-        });
-
-        setFollowers(serializedFollowers);
-      });
-  }, []);
-
   return (
     <>
       <Menu githubUser={githubUser} />
@@ -132,7 +102,7 @@ export default function Home({ githubUser }: HomeProps) {
           className="profile-relations-area"
           style={{ gridArea: 'profile-relation-area' }}
         >
-          <ProfileRelationsBox title="Seguidores" items={followers} />
+          <Followers githubUser={githubUser} />
 
           <ProfileRelationsBox title="Comunidades" items={communities} />
 
