@@ -1,4 +1,8 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
+
+import { useRouter } from 'next/router';
+
+import nookies from 'nookies';
 
 import { Link } from '../components/Link';
 import {
@@ -10,10 +14,31 @@ import {
 } from '../styles/login';
 
 export default function Login() {
+  const router = useRouter();
+
   const [githubUser, setGithubUser] = useState('');
 
-  function handleLogin() {
-    console.log('login');
+  function handleLogin(event: FormEvent) {
+    event.preventDefault();
+
+    const baseUrl = window.location.origin;
+
+    fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ githubUser }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        nookies.set(null, 'USER_TOKEN', data.token, {
+          path: '/',
+          maxAge: 86400 * 7,
+        });
+
+        router.push('/');
+      });
   }
 
   return (

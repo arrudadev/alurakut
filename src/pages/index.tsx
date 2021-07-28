@@ -147,8 +147,9 @@ export const getServerSideProps: GetServerSideProps = async context => {
   const cookies = nookies.get(context);
   const token = cookies.USER_TOKEN;
 
-  const decodedToken = jwt.decode(token) as { githubUser: string };
-  const githubUser = decodedToken?.githubUser;
+  const decodedToken = jwt.decode(token) as { user: string };
+
+  const githubUser = decodedToken?.user;
 
   if (!githubUser) {
     return {
