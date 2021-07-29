@@ -1,23 +1,12 @@
 import { FormEvent, useState } from 'react';
 
+import { useCommunity } from '../../../hooks/useCommunity';
 import { Button } from '../../Button';
 import { Input } from '../Input';
 
-type Community = {
-  id: string;
-  name: string;
-  image: string;
-};
+export function CreateCommunityForm() {
+  const { createCommunity } = useCommunity();
 
-type CreateCommunityFormProps = {
-  communities: Community[];
-  setCommunities(communities: Community[]): void;
-};
-
-export function CreateCommunityForm({
-  communities,
-  setCommunities,
-}: CreateCommunityFormProps) {
   const [communityTitle, setCommunityTitle] = useState('');
   const [communityImage, setCommunityImage] = useState('');
 
@@ -31,7 +20,7 @@ export function CreateCommunityForm({
         image: communityImage,
       };
 
-      setCommunities([...communities, community]);
+      createCommunity(community);
 
       setCommunityTitle('');
       setCommunityImage('');
@@ -50,6 +39,7 @@ export function CreateCommunityForm({
           onChange={event => setCommunityTitle(event.target.value)}
         />
       </div>
+
       <div>
         <Input
           placeholder="Coloque uma URL para usarmos de capa"

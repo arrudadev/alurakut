@@ -43,12 +43,7 @@ export function ActionsBox() {
       </Tabs>
 
       <TabsItem visible={createCommunityVisible}>
-        <CreateCommunityForm
-          communities={[]}
-          setCommunities={() => {
-            console.log('teste');
-          }}
-        />
+        <CreateCommunityForm />
       </TabsItem>
 
       <TabsItem visible={createTestimonialVisible}>
