@@ -5,23 +5,20 @@ import nookies from 'nookies';
 
 import { ActionsBox } from '../components/ActionsBox';
 import { Box } from '../components/Box';
+import { CommunitiesBox } from '../components/CommunitiesBox';
 import { CommunityPersons } from '../components/CommunityPersons';
 import { Followers } from '../components/Followers';
 import { IconSet } from '../components/IconSet';
 import { MainGrid } from '../components/MainGrid';
 import { Menu } from '../components/Menu';
-import { ProfileRelationsBox } from '../components/ProfileRelationsBox';
 import { ProfileSidebar } from '../components/ProfileSidebar';
 import { Testimonials } from '../components/Testimonials';
-import { useCommunity } from '../hooks/useCommunity';
 
 type HomeProps = {
   githubUser: string;
 };
 
 export default function Home({ githubUser }: HomeProps) {
-  const { communities } = useCommunity();
-
   return (
     <>
       <Menu githubUser={githubUser} />
@@ -48,7 +45,7 @@ export default function Home({ githubUser }: HomeProps) {
         >
           <Followers githubUser={githubUser} />
 
-          <ProfileRelationsBox title="Comunidades" items={communities} />
+          <CommunitiesBox />
 
           <CommunityPersons />
         </div>
