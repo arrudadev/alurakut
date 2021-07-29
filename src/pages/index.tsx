@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { GetServerSideProps } from 'next';
 
 import jwt from 'jsonwebtoken';
@@ -15,25 +13,14 @@ import { Menu } from '../components/Menu';
 import { ProfileRelationsBox } from '../components/ProfileRelationsBox';
 import { ProfileSidebar } from '../components/ProfileSidebar';
 import { Testimonials } from '../components/Testimonials';
-
-type Community = {
-  id: string;
-  name: string;
-  image: string;
-};
+import { useCommunity } from '../hooks/useCommunity';
 
 type HomeProps = {
   githubUser: string;
 };
 
 export default function Home({ githubUser }: HomeProps) {
-  const [communities, setCommunities] = useState<Community[]>([
-    {
-      id: '1',
-      name: 'Eu odeio acordar cedo',
-      image: 'https://alurakut.vercel.app/capa-comunidade-01.jpg',
-    },
-  ]);
+  const { communities } = useCommunity();
 
   return (
     <>
