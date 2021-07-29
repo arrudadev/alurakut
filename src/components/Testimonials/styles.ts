@@ -31,11 +31,6 @@ export const Wrapper = styled(Box)`
         margin-right: 5px;
       }
 
-      time {
-        color: #999999;
-        font-size: 12px;
-      }
-
       p {
         padding: 8px 0px;
         font-size: 14px;
