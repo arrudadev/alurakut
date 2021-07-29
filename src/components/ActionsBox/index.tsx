@@ -47,12 +47,7 @@ export function ActionsBox() {
       </TabsItem>
 
       <TabsItem visible={createTestimonialVisible}>
-        <CreateTestimonialForm
-          testimonials={[]}
-          setTestimonials={() => {
-            console.log('teste');
-          }}
-        />
+        <CreateTestimonialForm />
       </TabsItem>
     </Box>
   );

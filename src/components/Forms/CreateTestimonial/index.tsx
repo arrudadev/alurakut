@@ -1,23 +1,13 @@
 import { FormEvent, useState } from 'react';
 
+import { useTestimonial } from '../../../hooks/useTestimonial';
 import { Button } from '../../Button';
 import { Input } from '../Input';
 import { TextArea } from '../TextArea';
 
-type Testimonial = {
-  githubUser: string;
-  testimonial: string;
-};
+export function CreateTestimonialForm() {
+  const { createTestimonial } = useTestimonial();
 
-type CreateTestimonialFormProps = {
-  testimonials: Testimonial[];
-  setTestimonials(testimonials: Testimonial[]): void;
-};
-
-export function CreateTestimonialForm({
-  testimonials,
-  setTestimonials,
-}: CreateTestimonialFormProps) {
   const [githubUser, setGithubUser] = useState('');
   const [testimonial, setTestimonial] = useState('');
 
@@ -28,10 +18,11 @@ export function CreateTestimonialForm({
       const newTestimonial = {
         id: new Date().toISOString(),
         githubUser,
-        testimonial,
+        name: githubUser,
+        text: testimonial,
       };
 
-      setTestimonials([...testimonials, newTestimonial]);
+      createTestimonial(newTestimonial);
 
       setGithubUser('');
       setTestimonial('');
