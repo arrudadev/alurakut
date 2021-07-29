@@ -23,7 +23,7 @@ export function IconSet() {
           <IconWrapper style={{ gridArea: 'icon' }}>
             <img
               key={`orkut__icon_set__${slug}_img`}
-              src={`https://alurakut.vercel.app/icons/${icon}.svg`}
+              src={`/${icon}.svg`}
               alt={name}
               style={{ marginRight: '7px' }}
             />
@@ -44,7 +44,7 @@ export function IconSet() {
                 return (
                   <img
                     key={`orkut__icon_set__${slug}_img_${index}`}
-                    src={`https://alurakut.vercel.app/icons/${icon}.svg`}
+                    src={`/${icon}.svg`}
                     style={{
                       marginRight: '2px',
                       opacity: isNotTheLastIconOfTheCurrentProfileStatus

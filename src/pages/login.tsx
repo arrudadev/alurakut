@@ -45,7 +45,7 @@ export default function Login() {
     <Container>
       <Wrapper>
         <LogoArea>
-          <img src="https://alurakut.vercel.app/logo.svg" alt="Logo" />
+          <img src="/logo.svg" alt="Logo" />
 
           <p>
             <strong>Conecte-se</strong> aos seus amigos e familiares usando

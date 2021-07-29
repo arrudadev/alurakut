@@ -7,25 +7,22 @@ export function MenuList() {
     <List>
       <nav>
         <Link href="/">
-          <img src="http://alurakut.vercel.app/icons/user.svg" alt="Perfil" />
+          <img src="/user.svg" alt="Perfil" />
           Perfil
         </Link>
 
         <Link href="/">
-          <img src="http://alurakut.vercel.app/icons/book.svg" alt="Recados" />
+          <img src="/book.svg" alt="Recados" />
           Recados
         </Link>
 
         <Link href="/">
-          <img src="http://alurakut.vercel.app/icons/camera.svg" alt="Fotos" />
+          <img src="/camera.svg" alt="Fotos" />
           Fotos
         </Link>
 
         <Link href="/">
-          <img
-            src="http://alurakut.vercel.app/icons/sun.svg"
-            alt="Depoimentos"
-          />
+          <img src="/sun.svg" alt="Depoimentos" />
           Depoimentos
         </Link>
       </nav>
@@ -34,15 +31,12 @@ export function MenuList() {
 
       <nav>
         <Link href="/">
-          <img
-            src="http://alurakut.vercel.app/icons/plus.svg"
-            alt="GitHub Trends"
-          />
+          <img src="/plus.svg" alt="GitHub Trends" />
           GitHub Trends
         </Link>
 
-        <Link href="/logout">
-          <img src="http://alurakut.vercel.app//icons/logout.svg" alt="Sair" />
+        <Link href="/">
+          <img src="/logout.svg" alt="Sair" />
           Sair
         </Link>
       </nav>

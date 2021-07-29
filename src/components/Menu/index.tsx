@@ -14,14 +14,14 @@ export function Menu({ githubUser }: MenuProps) {
 
   const menuItems = [
     { name: 'Inicio', slug: '/' },
-    { name: 'Amigos', slug: '/amigos' },
-    { name: 'Comunidades', slug: '/comunidades' },
+    { name: 'Amigos', slug: '/' },
+    { name: 'Comunidades', slug: '/' },
   ];
 
   return (
     <Wrapper>
       <Container>
-        <Logo src="http://alurakut.vercel.app/logo.svg" />
+        <Logo src="/logo.svg" />
 
         <Nav style={{ flex: 1 }}>
           {menuItems.map(menuItem => (
@@ -35,7 +35,7 @@ export function Menu({ githubUser }: MenuProps) {
         </Nav>
 
         <Nav>
-          <a href="/logout">Sair</a>
+          <Link href="/">Sair</Link>
 
           <div>
             <Input placeholder="Pesquisar no Orkut" />
@@ -43,18 +43,9 @@ export function Menu({ githubUser }: MenuProps) {
         </Nav>
 
         <Button onClick={() => setMenuState(!isMenuOpen)}>
-          {isMenuOpen && (
-            <img
-              src="http://alurakut.vercel.app/icons/menu-open.svg"
-              alt="Open Menu"
-            />
-          )}
-          {!isMenuOpen && (
-            <img
-              src="http://alurakut.vercel.app/icons/menu-closed.svg"
-              alt="Close Menu"
-            />
-          )}
+          {isMenuOpen && <img src="/menu-open.svg" alt="Open Menu" />}
+
+          {!isMenuOpen && <img src="/menu-closed.svg" alt="Close Menu" />}
         </Button>
       </Container>
 

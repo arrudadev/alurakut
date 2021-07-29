@@ -24,7 +24,7 @@ export function CommunityContextProvider({
     {
       id: '1',
       name: 'Eu odeio acordar cedo',
-      image: 'https://alurakut.vercel.app/capa-comunidade-01.jpg',
+      image: '/capa-comunidade-01.jpg',
     },
   ]);
 

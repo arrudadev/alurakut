@@ -85,7 +85,7 @@ export const Input = styled.input`
   border: 0;
   border-radius: 1000px;
 
-  background-image: url(${`http://alurakut.vercel.app/icons/search.svg`});
+  background-image: url('/search.svg');
   background-position: 15px center;
   background-repeat: no-repeat;
 
