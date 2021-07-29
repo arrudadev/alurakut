@@ -1,3 +1,5 @@
+import { Link } from '../Link';
+
 import { Wrapper } from './styles';
 
 type ProfileRelationsBoxProps = {
@@ -22,10 +24,10 @@ export function ProfileRelationsBox({
         {items.map(item => {
           return (
             <li key={item.id}>
-              <a href={`/users/${item.name}`}>
+              <Link href="/">
                 <img src={item.image} alt={item.name} />
                 <span>{item.name}</span>
-              </a>
+              </Link>
             </li>
           );
         })}
