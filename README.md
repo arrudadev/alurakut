@@ -56,7 +56,7 @@ npm install
 Create your environment variables based on the examples of ```.env.development```
 
 ```
-cp .env.example .env
+cp .env.development .env.local
 ```
 
 After copying the examples, make sure to fill the variables with new values.
